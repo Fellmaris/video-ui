@@ -2,17 +2,17 @@ import {createSlice} from "@reduxjs/toolkit";
 import {addLocalStorage, getLocalStorage} from "../../storage/localStorage";
 
 const playlistSlice = createSlice({
-    name:'playlist',
+    name: 'playlist',
     initialState: [],
     reducers: {
-        addToPlaylist(state, action){
+        addToPlaylist(state, action) {
             const video = action.payload;
             const existingVideo = state.find(p => p.id === video.id);
-            if (!existingVideo){
+            if (!existingVideo) {
                 state.push(video);
             }
         },
-        removeFromPlaylist (state, {payload: id}){
+        removeFromPlaylist(state, {payload: id}) {
             return state.filter(v => v.id !== id);
         }
     }

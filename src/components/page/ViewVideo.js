@@ -15,7 +15,7 @@ export default () => {
         getVideo({videoId})
             .then(({data}) => setVideo(data))
             .catch((error) => console.log(error))
-            .finally(()=> setLoading(false));
+            .finally(() => setLoading(false));
 
     }, []);
 
@@ -23,7 +23,7 @@ export default () => {
 
     return (
         <Container maxWidth="md" sx={{my: 2}}
-                 >
+        >
             {
                 loading ? <Box sx={{display: 'flex', justifyContent: "center"}}>
                         <CircularProgress/>

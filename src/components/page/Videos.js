@@ -12,21 +12,21 @@ import {NavLink, useNavigate} from "react-router-dom";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import {useDispatch, useSelector} from "react-redux";
 import {addToPlaylist} from "../store/slice/playlistSlice";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default () => {
     const [videos, setVideos] = useState([]);
     const [loading, setLoading] = useState(true);
     const user = useSelector(state => state.user.user);
     const navigate = useNavigate();
+    const dispatcher = useDispatch();
+    const onAddVideo = (video) => dispatcher(addToPlaylist(video));
 
-    useEffect(()=> {
-        if(!user) {
+    useEffect(() => {
+        if (!user) {
             navigate('/');
         }
     }, [])
-
-    const dispatcher = useDispatch();
-    const onAddVideo = (video) => dispatcher(addToPlaylist(video));
 
     useEffect(() => {
         getVideos()
@@ -34,6 +34,11 @@ export default () => {
             .catch((error) => console.log(error))
             .finally(() => setLoading(false));
     }, []);
+
+    function onRemoveVideo(id) {
+        setVideos(videos.filter(v => v.id !== id));
+    }
+
     return (
         <Container maxWidth="md" sx={{my: 2}}>
             {
@@ -60,25 +65,56 @@ export default () => {
                                                 alt={video.location}
                                             />
                                             <CardContent>
-                                                    <Button
-                                                        style={{
-                                                            float: 'right',
-                                                            maxWidth: '20px',
-                                                            maxHeight: '20px',
-                                                            minWidth: '20px',
-                                                            minHeight: '20px'
-                                                        }}
-                                                        variant="contained"
-                                                        color="primary"
-                                                        onMouseDown={event => event.stopPropagation()}
-                                                        onClick={event => {
-                                                            event.stopPropagation();
-                                                            event.preventDefault();
-                                                            onAddVideo(video);
-                                                        }}
-                                                    >
-                                                        <PlaylistAddIcon/>
-                                                    </Button>
+                                                <Button
+
+                                                    style={{
+                                                        marginLeft: '5px',
+                                                        marginRight: '5px,',
+                                                        float: 'right',
+                                                        maxWidth: '20px',
+                                                        maxHeight: '20px',
+                                                        minWidth: '20px',
+                                                        minHeight: '20px'
+                                                    }}
+                                                    variant="contained"
+                                                    color="primary"
+                                                    onMouseDown={event => event.stopPropagation()}
+                                                    onClick={event => {
+                                                        event.stopPropagation();
+                                                        event.preventDefault();
+                                                        onAddVideo(video);
+                                                    }}
+                                                >
+                                                    <PlaylistAddIcon/>
+                                                </Button>
+                                                {user &&
+                                                <>
+                                                    {
+                                                        user.roles.includes('ADMIN') &&
+                                                        <Button
+                                                            style={{
+                                                                marginLeft: '5px',
+                                                                marginRight: '5px,',
+                                                                float: 'right',
+                                                                maxWidth: '20px',
+                                                                maxHeight: '20px',
+                                                                minWidth: '20px',
+                                                                minHeight: '20px'
+                                                            }}
+                                                            variant="contained"
+                                                            color="error"
+                                                            onMouseDown={event => event.stopPropagation()}
+                                                            onClick={event => {
+                                                                event.stopPropagation();
+                                                                event.preventDefault();
+                                                                onRemoveVideo(video.id);
+                                                            }}
+                                                        >
+                                                            <DeleteIcon/>
+                                                        </Button>
+                                                    }
+                                                </>
+                                                }
                                                 <Typography gutterBottom variant="h5" component="div">
                                                     {video.name}
                                                 </Typography>

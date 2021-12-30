@@ -10,12 +10,11 @@ import Playlist from "../page/Playlist";
 import SecuredRoute from "../security/SecuredRoute";
 
 
-
 export default () => {
     return (
         <>
-            <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
-            <CssBaseline />
+            <GlobalStyles styles={{ul: {margin: 0, padding: 0, listStyle: 'none'}}}/>
+            <CssBaseline/>
             <Routes>
                 <Route path="/" element={<Videos/>}/>
 

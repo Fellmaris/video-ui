@@ -1,6 +1,7 @@
 import * as React from "react";
 import {NavLink, useNavigate} from "react-router-dom";
-import {Avatar,
+import {
+    Avatar,
     Badge,
     Divider,
     IconButton,
@@ -44,9 +45,9 @@ export default () => {
             position="static"
             color="default"
             elevation={0}
-            sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
+            sx={{borderBottom: (theme) => `1px solid ${theme.palette.divider}`}}
         >
-            <Toolbar sx={{ flexWrap: 'wrap' }}>
+            <Toolbar sx={{flexWrap: 'wrap'}}>
                 <Typography
                     color="inherit"
                     noWrap
@@ -55,7 +56,7 @@ export default () => {
                         variant="button"
                         color="text.primary"
                         to={"/"}
-                        sx={{my: 1, mx: 1.5, fontSize: 20 }}
+                        sx={{my: 1, mx: 1.5, fontSize: 20}}
                         component={NavLink}
                         underline="none"
                     >
@@ -64,7 +65,7 @@ export default () => {
                 </Typography>
 
                 <nav>
-                    { user &&
+                    {user &&
                     <>
                         {
                             user.roles.includes('ADMIN') &&
@@ -91,7 +92,7 @@ export default () => {
                         variant="button"
                         color="text.primary"
                         to="/playlist"
-                        sx={{ my: 1, mx: 1.5 }}
+                        sx={{my: 1, mx: 1.5}}
                         component={NavLink}
                     >
                         <Badge badgeContent={totalVideos} color="primary">

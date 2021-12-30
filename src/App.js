@@ -7,17 +7,17 @@ import store from "./components/store/store";
 
 
 function App() {
-  return (
-      <Provider store={store}>
-          <BrowserRouter>
-          <div className="container">
-            <Header/>
-            <Content/>
-            <Footer/>
-        </div>
-        </BrowserRouter>
-      </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <div className="container">
+                    <Header/>
+                    <Content/>
+                    <Footer/>
+                </div>
+            </BrowserRouter>
+        </Provider>
+    );
 }
 
 export default App;

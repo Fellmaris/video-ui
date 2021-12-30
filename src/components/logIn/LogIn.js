@@ -41,11 +41,11 @@ export default () => {
             onSubmit={onLogin}
             validationSchema={loginValidationScheme}
         >
-            {props=>(
+            {props => (
                 <Container maxWidth="sm">
                     {
                         error &&
-                        <Alert severity="error" sx={{ width: '100%' }}>
+                        <Alert severity="error" sx={{width: '100%'}}>
                             Username or password are incorrect
                         </Alert>
                     }

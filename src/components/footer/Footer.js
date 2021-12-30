@@ -8,7 +8,7 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="#" >
+            <Link color="inherit" href="#">
                 Your Website
             </Link>{' '}
             {new Date().getFullYear()}
@@ -43,7 +43,6 @@ const footers = [
 ];
 
 
-
 export default () => {
     return (
         <Container
@@ -73,7 +72,7 @@ export default () => {
                     </Grid>
                 ))}
             </Grid>
-            <Copyright sx={{ mt: 5 }} />
+            <Copyright sx={{mt: 5}}/>
         </Container>
     )
 }

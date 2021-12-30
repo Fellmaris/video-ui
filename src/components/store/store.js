@@ -4,7 +4,7 @@ import user from "./slice/userSlice";
 
 const buildStore = () => {
     const store = configureStore({
-        reducer:{
+        reducer: {
             playlist, user
         },
         preloadedState: {

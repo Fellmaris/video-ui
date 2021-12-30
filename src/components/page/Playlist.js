@@ -4,15 +4,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import {useDispatch, useSelector} from "react-redux";
 import {removeFromPlaylist} from "../store/slice/playlistSlice";
 
-export default () =>{
+export default () => {
     const videos = useSelector(state => state.playlist);
     const dispatcher = useDispatch();
     const onRemoveVideo = (id) => dispatcher(removeFromPlaylist(id));
 
     return (
-        <Container maxWidth="md" sx={{my:2}}>
+        <Container maxWidth="md" sx={{my: 2}}>
             {
-                videos.length === 0 ?   <Alert severity="info">Playlist is empty</Alert>
+                videos.length === 0 ? <Alert severity="info">Playlist is empty</Alert>
                     :
                     <TableContainer component={Paper}>
                         <Table sx={{minWidth: 100}} aria-label="simple table">
